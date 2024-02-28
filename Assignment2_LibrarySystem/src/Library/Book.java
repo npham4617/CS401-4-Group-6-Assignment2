@@ -1,13 +1,13 @@
 package Library;
 
 public class Book {
-	private int isbn;
+	private String isbn;
 	private String title;
 	private String author;
 	private String genre;
 	private String status;
 
-	public Book(int isbn, String title, String author, String genre, String status) {
+	public Book(String isbn, String title, String author, String genre, String status) {
 	    this.isbn = isbn;
 	    this.title = title;
 	    this.author = author;
@@ -15,12 +15,11 @@ public class Book {
 	    this.status = status; 
 	}
 
-	// Settlers and Getters
-	public int getIsbn() {
+	public String getIsbn() {
 	    return isbn;
 	}
 	
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 	    this.isbn = isbn;
 	}
 

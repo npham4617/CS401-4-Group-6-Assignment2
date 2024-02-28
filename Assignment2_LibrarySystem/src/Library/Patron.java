@@ -1,16 +1,22 @@
 package Library;
 
+import java.util.*;
+
 public class Patron {
 	private int ID;
 	private String name;
-	private String contactInfo;
-	private String borrowingHistory;
+	private String email;
+	private String phone_number;
+	private String typeUser;
+	private List<String> borrowingHistory;
 	
-	public Patron(int ID, String name, String contactInfo, String borrowingHistory) {
+	public Patron(int ID, String name, String email, String phone_number, String typeUser) {
 	    this.ID = ID;
 	    this.name = name;
-	    this.contactInfo = contactInfo;
-	    this.borrowingHistory = borrowingHistory;
+	    this.email = email;
+	    this.phone_number = phone_number;
+	    this.typeUser = typeUser;
+	    this.borrowingHistory = new ArrayList<>();
 	}
 
 	public int ID() {
@@ -21,28 +27,58 @@ public class Patron {
 	   this.ID = id;
 	}
 
-	public String name() {
+	public String getName() {
 	    return name;
 	}
 	
 	public void setName(String name) {
-		   this.name = name;
+		this.name = name;
 	}
 
-	public String contactInfo() {
-	    return contactInfo;
+	public String email() {
+	    return email;
 	}
 	
-	public void setContactInfo(String contactInfo) {
-		   this.contactInfo = contactInfo;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+		
+	public String phone_number() {
+		 return phone_number;
+	}
+		
+	public void setPhone_number(String phone_number) {
+		 this.phone_number = phone_number;
 	}
 
-	public String borrowingHistory() {
-	    return borrowingHistory;
+	public void addToBorrowingHistory(String entry) {
+        borrowingHistory.add(entry);
+    }
+
+    // Method to get the borrowing history
+    public List<String> getBorrowingHistory() {
+        return borrowingHistory;
+    }
+    
+    public String typeUser() {
+	    return typeUser;
 	}
 	
-	public void setBorrowingHistory(String borrowingHistory) {
-		   this.borrowingHistory = borrowingHistory;
+	public void setType(String typeUser) {
+	   this.typeUser = typeUser;
 	}
-
+	
+    public String toString() {
+		String text = "ID: " + ID + " \t " + "Name: " + name + " \t " 
+					+ "Email: " + email + " \t " + "Phone number: " + phone_number + "\n";
+		return text;
+	}
+    
+    public void dislayborrowinghistory(Patron myPatron){
+    	List<String> borrowingHistory = myPatron.getBorrowingHistory();
+    	System.out.println("Borrowing History for " + myPatron.getName() + ": \n");
+    	for (String entry : borrowingHistory) {
+    		System.out.println(entry);
+    	}
+    }
 }
