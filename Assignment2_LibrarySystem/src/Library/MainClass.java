@@ -41,6 +41,9 @@ public class MainClass {
 	    String phone_number = scanner.nextLine();
 	    int n = library.checkLogin(email, phone_number);
 	    
+		System.out.print("\nHi, " + library.getPatron().get(n).getName() + " - "
+				+ library.getPatron().get(n).typeUser() + "\n");
+		
 	    if (n != -1) {
 	    	if(library.getPatron().get(n).typeUser().equals("Admin")) {
 	    		AdminScreen();
@@ -100,6 +103,10 @@ public class MainClass {
 	    		2.  Add Book
 	    		3.  Update Book
 	    		4.  Delete Book
+	    		~~~~~~~~~~~~~~~~~~~~
+	    		5.  View Users List
+	    		6.  Update Borrowing History
+	    		7.  Borrow Books
                 """;
 	    System.out.println(myMultiLineText);
 	    System.out.print("Please Enter Your Choice: " );
@@ -121,7 +128,19 @@ public class MainClass {
 			case 4:
 				deleteBook();
 				break;
-			
+				
+			case 5: 
+				displayUserLists();
+		    	break;
+		    	
+			case 6:  
+				addBook();
+		    	break; 
+		    	
+			case 7:
+				updateBook();
+				break; 
+						
 			default: 
 		    	System.out.print("Error!" );
 	    }
@@ -218,10 +237,8 @@ public class MainClass {
 				break;
 			
 			default: 
-		    	System.out.print("Error!" );
-		    	
+		    	System.out.print("Error!" );    	
 			 }
-
 		}
 		
 		System.out.println("\nBook information is updated successfully!");
@@ -265,6 +282,19 @@ public class MainClass {
 	    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
 	    				"\t\t" + book.status());
 
+	    }
+    }
+	
+	public static void displayUserLists()
+    {
+		System.out.println("\n~~~~ Users List ~~~~\n");
+	    for (Patron p: library.getPatron()) {
+	    	System.out.println("ID: " + p.ID() 
+	    	+ "\nName: " + p.getName() 
+	    	+ "\nEmail: " + p.email() 
+	    	+ "\nPhone number: " + p.phone_number()
+	    	+ "\nUser Type: " + p.typeUser()
+	    	+ "\n");
 	    }
     }
 }

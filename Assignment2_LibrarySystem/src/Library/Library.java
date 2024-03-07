@@ -26,6 +26,8 @@ public class Library {
 	    return books;
 	}
 	
+	// Initial Book Data
+	
 	public void getLibraryData() {
 		
 		Book book1 = new Book("202001", "Adventures of Tom Sawyer         ", "Mark Twain", "Mystery", "Available");
@@ -76,6 +78,8 @@ public class Library {
 	public Patron getPatron(int n) {
 	    return patrons.get(n);
 	}
+	
+	// Initial Book Data
 	
 	public void getLibraryUser() {
 			
