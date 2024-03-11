@@ -135,6 +135,11 @@ public class Library {
 			if(p.email().equals(email) && p.phone_number().equals(phone_number)) {
 				index = getPatron().indexOf(p);
 			}
+			else
+			{
+				System.out.println("The inputed email or phone number is not correct!");
+				break;
+			}
 		}
 		return index;
 	}

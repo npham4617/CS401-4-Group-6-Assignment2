@@ -33,12 +33,15 @@ public class MainClass {
 		
 	public static void Login() {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("\n-- LOGIN USER HERE! --");
-		System.out.print("\nEmail: " );
-	    String email = scanner.nextLine();
-	    System.out.print("Phone Number: " );
-	    String phone_number = scanner.nextLine();
-	    int n = library.checkLogin(email, phone_number);
+		int n = -1;
+		do {
+			System.out.println("\n-- LOGIN USER HERE! --");
+			System.out.print("\nEmail: " );
+		    String email = scanner.nextLine();
+		    System.out.print("Phone Number: " );
+		    String phone_number = scanner.nextLine();
+		    n = library.checkLogin(email, phone_number);
+		} while (n==-1);
 	    
 		System.out.print("\nHi, " + library.getPatron().get(n).getName() + " - "
 				+ library.getPatron().get(n).typeUser() + "\n");
