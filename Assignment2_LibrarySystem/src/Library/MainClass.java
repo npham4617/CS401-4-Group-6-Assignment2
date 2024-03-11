@@ -30,7 +30,6 @@ public class MainClass {
 	    }
 	}
 	
-		
 	public static void Login() {
 		Scanner scanner = new Scanner(System.in);
 		int n = -1;
