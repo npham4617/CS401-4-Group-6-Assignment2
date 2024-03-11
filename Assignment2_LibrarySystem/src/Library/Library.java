@@ -1,8 +1,8 @@
 package Library;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Library {
 	
@@ -28,7 +28,7 @@ public class Library {
 	
 	// Initial Book Data
 	
-	public void getLibraryData() {
+	public void getLibraryData() {  
 		
 		Book book1 = new Book("202001", "Adventures of Tom Sawyer         ", "Mark Twain", "Mystery", "Available");
 	    Book book2 = new Book("202002", "Charlie and the Chocolate Factory", "Roald Dahl", "Fiction", "Borrowed");
@@ -61,6 +61,56 @@ public class Library {
 	    addBook(book13);
 	    addBook(book14);
 	    addBook(book15);
+	    
+	    Patron user1 = new Patron(2020, "Allan Sherwood", "allan.sherwood@yahoo.com", "4088814551", "Admin");
+		Patron user2 = new Patron(2021, "John Doe", "john.doe@example.com", "6698814551", "User");
+		Patron user3 = new Patron(2022, "Christineb", "christineb@solarone.com", "4028814551", "User");
+		Patron user4 = new Patron(2023, "David Goldstein", "david.goldstein@hotmail.com", "4058814551", "User");
+	   
+	    addPatron(user1);
+	    addPatron(user2);
+	    addPatron(user3);
+	    addPatron(user4);
+	    
+	    String dateString;
+	    Date date;
+	    SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
+	    
+	    try {
+	    Transaction transaction1 = new Transaction(user1, book2);
+	    user1.addToBorrowHistory(transaction1);
+	    dateString = "03-10-2024";
+	    date = formatter.parse(dateString);
+	    transaction1.setborrowedDate(date);
+	    
+	    Transaction transaction2 = new Transaction(user1, book5);
+	    user1.addToBorrowHistory(transaction2);
+	    dateString = "01-17-2024";
+	    date = formatter.parse(dateString);
+	    transaction2.setborrowedDate(date);
+	    
+	    Transaction transaction3 = new Transaction(user2, book7);
+	    user2.addToBorrowHistory(transaction3);
+	    dateString = "02-24-2024";
+	    date = formatter.parse(dateString);
+	    transaction3.setborrowedDate(date);
+	    
+	    Transaction transaction4 = new Transaction(user2, book13);
+	    user2.addToBorrowHistory(transaction4);
+	    dateString = "02-17-2023";
+	    date = formatter.parse(dateString);
+	    transaction4.setborrowedDate(date);
+	    
+	    Transaction transaction5 = new Transaction(user4, book14);
+	    user4.addToBorrowHistory(transaction5);
+	    dateString = "12-24-2023";
+	    date = formatter.parse(dateString);
+	    transaction5.setborrowedDate(date);
+	    }
+	    catch (ParseException e) {
+            System.out.println("Exception: " + e);
+        }
+
 	}
 	
 	public void addPatron(Patron myUser) {
@@ -77,36 +127,6 @@ public class Library {
 	
 	public Patron getPatron(int n) {
 	    return patrons.get(n);
-	}
-	
-	// Initial Book Data
-	
-	public void getLibraryUser() {
-			
-			Patron user1 = new Patron(2020, "Allan Sherwood", "allan.sherwood@yahoo.com", "4088814551", "Admin");
-			Patron user2 = new Patron(2021, "John Doe", "john.doe@example.com", "6698814551", "User");
-			Patron user3 = new Patron(2022, "Christineb", "christineb@solarone.com", "4028814551", "User");
-			Patron user4 = new Patron(2023, "David Goldstein", "david.goldstein@hotmail.com", "4058814551", "User");
-		   
-		    addPatron(user1);
-		    addPatron(user2);
-		    addPatron(user3);
-		    addPatron(user4);
-		    
-		    // Add entries to the borrowing history
-	        user1.addToBorrowingHistory("Harry Potter and the Sorcerer's Stone");
-	        user1.addToBorrowingHistory("The Return of the King");
-	        user1.addToBorrowingHistory("The Lunar Chronicles series");
-	        
-	        user2.addToBorrowingHistory("Learn PHP and work in Facebook");
-	        user2.addToBorrowingHistory("One Hundred Years of Solitude");
-	        user2.addToBorrowingHistory("A journey to the centre of the earth");
-	        user2.addToBorrowingHistory("The Haunting of Hill House");
-	        
-	        user3.addToBorrowingHistory("Learn JavaScript in 10 Minutes");
-	        user3.addToBorrowingHistory("Learning .Net is not boring");
-	        
-	        user4.addToBorrowingHistory("Learn Java for Dummies");    
 	}
 
 	public int checkLogin(String email, String phone_number) {

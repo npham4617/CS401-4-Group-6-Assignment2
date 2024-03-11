@@ -8,7 +8,7 @@ public class Patron {
 	private String email;
 	private String phone_number;
 	private String typeUser;
-	private List<String> borrowingHistory;
+	private List<Transaction> borrowingHistory;
 	
 	public Patron(int ID, String name, String email, String phone_number, String typeUser) {
 	    this.ID = ID;
@@ -23,7 +23,7 @@ public class Patron {
 	    return ID;
 	}
 	
-	public void setID(int id) {
+	public void borrowingHistory(int id) {
 	   this.ID = id;
 	}
 
@@ -51,12 +51,11 @@ public class Patron {
 		 this.phone_number = phone_number;
 	}
 
-	public void addToBorrowingHistory(String entry) {
-        borrowingHistory.add(entry);
+	public void addToBorrowHistory(Transaction transaction) {
+		borrowingHistory.add(transaction);
     }
 
-    // Method to get the borrowing history
-    public List<String> getBorrowingHistory() {
+    public List<Transaction> getBorrowHistory() {
         return borrowingHistory;
     }
     
@@ -74,11 +73,14 @@ public class Patron {
 		return text;
 	}
     
-    public void dislayborrowinghistory(Patron myPatron){
-    	List<String> borrowingHistory = myPatron.getBorrowingHistory();
-    	System.out.println("Borrowing History for " + myPatron.getName() + ": \n");
-    	for (String entry : borrowingHistory) {
-    		System.out.println(entry);
-    	}
+    public void displayBorrowHistory(Patron patron) {
+        List<Transaction> borrowHistory = patron.getBorrowHistory();
+        System.out.println("** " + patron.getName() + " **");
+        for (Transaction transaction : borrowHistory) {
+            System.out.println("Book: " + transaction.book().getTitle() +
+	                               "\n Borrowed Date: " + transaction.borrowedDate() +
+	                               "\n Returned Date: " + transaction.returnDate() + "\n");
+        }
     }
-}
+    
+ }

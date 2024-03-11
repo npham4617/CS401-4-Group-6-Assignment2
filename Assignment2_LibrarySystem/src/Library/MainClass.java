@@ -10,7 +10,6 @@ public class MainClass {
 	public static void main(String[] args) {
 		
 		library.getLibraryData();
-		library.getLibraryUser();
 		
 		System.out.println("Welcome to Library Management!");
 		
@@ -91,6 +90,7 @@ public class MainClass {
 			\n-- LIBRARY COLLECTIONS --\n
 			1.  View Library Books
 			2.  Borrow Book
+			3. 	Return Book
 	        """;
 		System.out.println(myMultiLineText);
 	}
@@ -105,8 +105,9 @@ public class MainClass {
 	    		4.  Delete Book
 	    		~~~~~~~~~~~~~~~~~~~~
 	    		5.  View Users List
-	    		6.  Update Borrowing History
+	    		6.  Show Borrowing History
 	    		7.  Borrow Books
+	    		8.  Return Books
                 """;
 	    System.out.println(myMultiLineText);
 	    System.out.print("Please Enter Your Choice: " );
@@ -134,17 +135,42 @@ public class MainClass {
 		    	break;
 		    	
 			case 6:  
-				addBook();
+				ShowBorrowingHistory();
 		    	break; 
 		    	
 			case 7:
-				updateBook();
+				BorrowBook();
+				break; 
+			
+			case 8:
+				ReturnBook();
 				break; 
 						
 			default: 
 		    	System.out.print("Error!" );
 	    }
 	    scan.close();
+	}
+	
+	private static void ShowBorrowingHistory() {
+		System.out.println("\n~~~~ Borrowing History ~~~~\n");
+		 for (Patron p: library.getPatron()) {
+			 if (p.getBorrowHistory().isEmpty()){
+				 	System.out.println("** " + p.getName() + " **");
+	        		System.out.println("There are no borrow histories.\n");
+	         }
+			 else {
+				 p.displayBorrowHistory(p);
+			 }
+		 }
+	}
+	
+	private static void BorrowBook() {
+		
+	}
+
+	private static void ReturnBook() {
+		
 	}
 	
 	private static int searchBook(String isbn) {
