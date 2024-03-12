@@ -1,5 +1,7 @@
 package Library;
 import java.util.Date;
+import java.util.Locale;
+import java.text.*;
 
 
 public class Transaction {
@@ -7,12 +9,13 @@ public class Transaction {
 	private Book book;
 	private Date borrowedDate;
 	private Date returnDate;
+	private SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
 
 	public Transaction(Patron patron, Book book) {
 	    this.patron = patron;
 	    this.book = book;
 	}
-
+	
 	public Patron patron() {
 	    return patron;
 	}
@@ -25,35 +28,30 @@ public class Transaction {
 	    return borrowedDate;
 	}
 
-	public void setborrowedDate(Date dateString) {
-		this.borrowedDate = dateString;
+	public void setborrowedDate(String dateString) {
+		// change dateString to date
+		try {
+			Date date = formatter.parse(dateString);
+			this.borrowedDate = date;
+		}
+	    catch (ParseException e) {
+            System.out.println("Exception: " + e);
+        }
 	}
 	
 	public Date returnDate() {
 	    return returnDate;
 	}
 	
-	public void setreturnDate(Date returnDate) {
-		this.returnDate = returnDate;
+	public void setreturnDate(String dateString) {
+		// change dateString to date
+		try {
+			Date date = formatter.parse(dateString);
+			this.returnDate = date;
+		}
+	    catch (ParseException e) {
+            System.out.println("Exception: " + e);
+        }
 	}
 	
-	public boolean borrowBook() {
-        if (book.status().equals("Available")) {
-        	borrowedDate = new Date();
-            return true;
-        } else {
-        	System.out.println("The book is borrowed, sorry");
-            return false;
-        }
-    }
-
-    public boolean returnBook() {
-        if (book.status().equals("Borrowed")) {
-        	returnDate = new Date();
-            return true;
-        } else {
-        	System.out.println("Cannot return book at this time, sorry!");
-            return false;
-        }
-    }
-}
+ }

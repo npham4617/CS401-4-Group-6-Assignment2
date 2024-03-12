@@ -27,7 +27,6 @@ public class Library {
 	}
 	
 	// Initial Book Data
-	
 	public void getLibraryData() {  
 		
 		Book book1 = new Book("202001", "Adventures of Tom Sawyer         ", "Mark Twain", "Mystery", "Available");
@@ -72,45 +71,30 @@ public class Library {
 	    addPatron(user3);
 	    addPatron(user4);
 	    
-	    String dateString;
-	    Date date;
-	    SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
-	    
-	    try {
 	    Transaction transaction1 = new Transaction(user1, book2);
 	    user1.addToBorrowHistory(transaction1);
-	    dateString = "03-10-2024";
-	    date = formatter.parse(dateString);
-	    transaction1.setborrowedDate(date);
+	    transaction1.setborrowedDate("03-10-2024");
+	    transaction1.setreturnDate("06-23-2024");
 	    
 	    Transaction transaction2 = new Transaction(user1, book5);
 	    user1.addToBorrowHistory(transaction2);
-	    dateString = "01-17-2024";
-	    date = formatter.parse(dateString);
-	    transaction2.setborrowedDate(date);
-	    
+	    transaction2.setborrowedDate("01-17-2024");
+	    transaction2.setreturnDate("06-17-2024");
+	    		
 	    Transaction transaction3 = new Transaction(user2, book7);
 	    user2.addToBorrowHistory(transaction3);
-	    dateString = "02-24-2024";
-	    date = formatter.parse(dateString);
-	    transaction3.setborrowedDate(date);
+	    transaction3.setborrowedDate("02-24-2024");
+	    transaction3.setreturnDate("06-24-2024");
 	    
 	    Transaction transaction4 = new Transaction(user2, book13);
 	    user2.addToBorrowHistory(transaction4);
-	    dateString = "02-17-2023";
-	    date = formatter.parse(dateString);
-	    transaction4.setborrowedDate(date);
+	    transaction4.setborrowedDate("02-17-2023");
+	    transaction4.setreturnDate("06-29-2024");
 	    
 	    Transaction transaction5 = new Transaction(user4, book14);
 	    user4.addToBorrowHistory(transaction5);
-	    dateString = "12-24-2023";
-	    date = formatter.parse(dateString);
-	    transaction5.setborrowedDate(date);
-	    }
-	    catch (ParseException e) {
-            System.out.println("Exception: " + e);
-        }
-
+	    transaction5.setborrowedDate("12-24-2023");
+	    transaction5.setreturnDate("06-14-2024");
 	}
 	
 	public void addPatron(Patron myUser) {
@@ -136,11 +120,7 @@ public class Library {
 				index = getPatron().indexOf(p);
 				break;
 			}
-			if(!(p.email().equals(email)) || !(p.phone_number().equals(phone_number)))
-			{
-				System.out.println("The inputed email or phone number is not correct!");
-				break;
-			}
+
 		}
 		return index;
 	}

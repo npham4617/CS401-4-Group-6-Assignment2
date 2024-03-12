@@ -1,6 +1,7 @@
 package Library;
 
 import java.util.*;
+import java.text.*;
 
 public class MainClass {
 	
@@ -47,11 +48,11 @@ public class MainClass {
 		
 	    if (n != -1) {
 	    	if(library.getPatron().get(n).typeUser().equals("Admin")) {
-	    		AdminScreen();
+	    		AdminScreen(library.getPatron().get(n));
 	    	}
 	    	
 	    	if(library.getPatron().get(n).typeUser().equals("User")) {
-	    		UserScreen();
+	    		UserScreen(library.getPatron().get(n));
 	    	}   		
 	    }
 	    
@@ -87,17 +88,38 @@ public class MainClass {
 		scanner.close();
 	}
 	
-	public static void UserScreen() {
+	public static void UserScreen(Patron p) {
 		String myMultiLineText = """
 			\n-- LIBRARY COLLECTIONS --\n
 			1.  View Library Books
 			2.  Borrow Book
-			3. 	Return Book
+			3.  Return Book
 	        """;
+		
 		System.out.println(myMultiLineText);
+		System.out.print("Please Enter Your Choice: " );
+	    int answer = scan.nextInt();
+	    switch(answer) {
+		
+			case 1: 
+				displayAllBooks();
+		    	break;
+		    	
+			case 2:  
+				BorrowBook(p);
+				break; 
+			
+			case 3:
+				ReturnBook(p);
+				break; 
+						
+			default: 
+		    	System.out.print("Error!" );
+	    }
+	    scan.close();
 	}
 	
-	public static void AdminScreen() {
+	public static void AdminScreen(Patron p) {
 		
 		String myMultiLineText = """
 	    		\n-- LIBRARY COLLECTIONS --\n
@@ -141,21 +163,21 @@ public class MainClass {
 		    	break; 
 		    	
 			case 7:
-				BorrowBook();
+				BorrowBook(p);
 				break; 
 			
 			case 8:
-				ReturnBook();
+				ReturnBook(p);
 				break; 
 						
 			default: 
 		    	System.out.print("Error!" );
 	    }
-	    scan.close();
+	     scan.close();
 	}
 	
 	private static void ShowBorrowingHistory() {
-		System.out.println("\n~~~~ Borrowing History ~~~~\n");
+		System.out.println("\n-- BORROWING HISTORY --\n");
 		 for (Patron p: library.getPatron()) {
 			 if (p.getBorrowHistory().isEmpty()){
 				 	System.out.println("** " + p.getName() + " **");
@@ -167,11 +189,87 @@ public class MainClass {
 		 }
 	}
 	
-	private static void BorrowBook() {
+	private static void BorrowBook(Patron p) {
+		DateFormat dateFormat = new SimpleDateFormat("MM-DD-YYYY");
 		
-	}
+		Scanner scan = new Scanner(System.in);
+		System.out.println("\nBORROW BOOK HERE!\n");
+		System.out.println("Below are all available books in the library: \n");
+		for (Book book: library.getBooks()) {
+			if(book.status().equals("Available")) {
+				System.out.println("ISBN: " + book.getTitle() + "\n"
+						+ "Title: " + book.getIsbn() + "\n"
+						+ "Author: " + book.getAuthor() + "\n"
+						+ "Genre: " + book.getGenre() + "\n");
+			}
+		}
 
-	private static void ReturnBook() {
+		System.out.print("Enter ISBN of the book: ");
+		String isbn = scan.nextLine();
+		int result = searchBook(isbn);
+			
+		if(result !=-1)			
+		{	
+			Book book = library.getBooks().get(result);
+			System.out.print("Please enter the return date (MM-DD-YYYY): ");
+			String returnDate = scan.nextLine();
+			Transaction transaction = new Transaction(p, book);	
+			
+			// change borrowedDate to string
+			String borrowedDate = dateFormat.format(new Date());
+			transaction.setborrowedDate(borrowedDate);
+			transaction.setreturnDate(returnDate);
+			
+			book.setStatus("Borrowed");
+				
+			System.out.println("The book is borrowed successfully!");
+			System.out.println ("\nName: " + transaction.patron().getName()
+							+ "\nBook title: " + transaction.book().getTitle()
+							+ "\nBorrow Date: " + transaction.borrowedDate() 
+							+ "\nReturn Date: " + transaction.returnDate());		
+		}	
+			
+		scan.close();
+	}
+	
+	private static void ReturnBook(Patron p) {
+		DateFormat dateFormat = new SimpleDateFormat("MM-DD-YYYY");
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.println("\nRETURN BOOK HERE!\n");
+		System.out.println("Below are the books currently borrowed from Library");
+		p.displayBorrowHistory(p);
+		System.out.print("Enter ISBN of the book: ");
+		String isbn = scan.nextLine();
+		int result = searchBook(isbn);
+			
+		if(result !=-1)			
+		{	
+			Book book = library.getBooks().get(result);
+			Transaction tran = new Transaction(p, book);	
+			
+			// Find the borrowDate for the returned book
+			Date borrowDate = null;
+			for (Transaction tr1 : p.getBorrowHistory()) {
+				if (tr1.book().getIsbn() == book.getIsbn()) {
+					borrowDate = tr1.borrowedDate();
+				}
+			}
+			
+			// change returnDate to string
+			String returnDate = dateFormat.format(new Date());
+			tran.setreturnDate(returnDate);
+			
+			book.setStatus("Available");
+				
+			System.out.println("The book is returned successfully!");
+			System.out.println ("\nName: " + p.getName()
+							+ "\nBook title: " + book.getTitle()
+							+ "\nBorrow Date: " + borrowDate
+							+ "\nReturn Date: " + tran.returnDate());		
+		}	
+			
+		scan.close();
 		
 	}
 	
@@ -303,7 +401,7 @@ public class MainClass {
 	
 	public static void displayAllBooks()
     {
-		System.out.println("\nBooks in the library:\n");
+		System.out.println("\nBOOKS IN THE LIBRARY:\n");
 		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
 	    for (Book book: library.getBooks()) {
 	    	System.out.println(book.getIsbn() + "\t\t" + book.getTitle() + 
@@ -315,7 +413,7 @@ public class MainClass {
 	
 	public static void displayUserLists()
     {
-		System.out.println("\n~~~~ Users List ~~~~\n");
+		System.out.println("\n~~~~ USERS LIST ~~~~\n");
 	    for (Patron p: library.getPatron()) {
 	    	System.out.println("ID: " + p.ID() 
 	    	+ "\nName: " + p.getName() 
