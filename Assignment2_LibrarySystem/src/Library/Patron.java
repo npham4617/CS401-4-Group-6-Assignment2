@@ -77,7 +77,7 @@ public class Patron {
         List<Transaction> borrowHistory = patron.getBorrowHistory();
         System.out.println("** " + patron.getName() + " **");
         for (Transaction transaction : borrowHistory) {
-            System.out.println("ISBN: " + transaction.book().getIsbn() +
+       		System.out.println("ISBN: " + transaction.book().getIsbn() +
             		"\nBook: " + transaction.book().getTitle() +
 	                "\n Borrowed Date: " + transaction.borrowedDate() +
 	                 "\n Returned Date: " + transaction.returnDate() + "\n");

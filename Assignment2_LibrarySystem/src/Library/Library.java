@@ -1,7 +1,5 @@
 package Library;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Library {
@@ -119,8 +117,7 @@ public class Library {
 			if(p.email().equals(email) && p.phone_number().equals(phone_number)) {
 				index = getPatron().indexOf(p);
 				break;
-			}
-
+			}	
 		}
 		return index;
 	}

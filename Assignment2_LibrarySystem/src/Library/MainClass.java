@@ -31,6 +31,7 @@ public class MainClass {
 	    }
 	}
 	
+		
 	public static void Login() {
 		Scanner scanner = new Scanner(System.in);
 		int n = -1;
@@ -42,7 +43,7 @@ public class MainClass {
 		    String phone_number = scanner.nextLine();
 		    n = library.checkLogin(email, phone_number);
 		} while (n==-1);
-	    
+				    
 		System.out.print("\nHi, " + library.getPatron().get(n).getName() + " - "
 				+ library.getPatron().get(n).typeUser() + "\n");
 		
@@ -55,7 +56,6 @@ public class MainClass {
 	    		UserScreen(library.getPatron().get(n));
 	    	}   		
 	    }
-	    
 	    scanner.close();
 	}
 	
@@ -238,7 +238,14 @@ public class MainClass {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("\nRETURN BOOK HERE!\n");
 		System.out.println("Below are the books currently borrowed from Library");
-		p.displayBorrowHistory(p);
+		if (p.getBorrowHistory().isEmpty()){
+		 	System.out.println("** " + p.getName() + " **");
+    		System.out.println("There are no borrow histories.\n");
+    		System.exit(0);
+	     }
+		 else {
+			 p.displayBorrowHistory(p);
+		 }
 		System.out.print("Enter ISBN of the book: ");
 		String isbn = scan.nextLine();
 		int result = searchBook(isbn);
@@ -422,6 +429,7 @@ public class MainClass {
 	    	+ "\nUser Type: " + p.typeUser()
 	    	+ "\n");
 	    }
-    }
+    } 
+	
 }
 
