@@ -416,7 +416,7 @@ public class MainClass {
 	    				"\t\t" + book.status());
 
 	    }
-	    System.out.print("Do you want to borrow any of the books? (yes or no) ");
+	    System.out.print("\nDo you want to borrow any of the books? (yes or no): ");
 	    scan.nextLine();
 	    // Convert user answer to lowe-rcase for case-insensitive comparison
 	    String userAnswer = scan.nextLine().toLowerCase(); 
