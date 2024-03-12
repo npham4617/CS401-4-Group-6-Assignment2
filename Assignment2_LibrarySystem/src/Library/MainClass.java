@@ -102,7 +102,7 @@ public class MainClass {
 	    switch(answer) {
 		
 			case 1: 
-				displayAllBooks();
+				displayAllBooks(p);
 		    	break;
 		    	
 			case 2:  
@@ -139,7 +139,7 @@ public class MainClass {
 	    switch(answer) {
 		
 			case 1: 
-				displayAllBooks();
+				displayAllBooks(p);
 		    	break;
 		    	
 			case 2:  
@@ -406,7 +406,7 @@ public class MainClass {
 		scanner.close();
 	}
 	
-	public static void displayAllBooks()
+	public static void displayAllBooks(Patron p)
     {
 		System.out.println("\nBOOKS IN THE LIBRARY:\n");
 		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
@@ -415,6 +415,15 @@ public class MainClass {
 	    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
 	    				"\t\t" + book.status());
 
+	    }
+	    System.out.print("Do you want to borrow any of the books? (yes or no) ");
+	    scan.nextLine();
+	    // Convert user answer to lowe-rcase for case-insensitive comparison
+	    String userAnswer = scan.nextLine().toLowerCase(); 
+	    if (userAnswer.equals("yes")) {
+	    	BorrowBook(p);
+	    } else {
+	        System.out.println("\nThank you for using our library");
 	    }
     }
 	
