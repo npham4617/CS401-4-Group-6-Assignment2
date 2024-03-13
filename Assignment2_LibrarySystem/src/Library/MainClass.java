@@ -10,26 +10,51 @@ public class MainClass {
 	
 	public static void main(String[] args) {
 		
-		library.getLibraryData();
-		
-		System.out.println("Welcome to Library Management!");
-		
-		System.out.println("\n1. Login\n2. Create a New User");
-		System.out.print("\nPlease Enter Your Choice: " );
-		int answer = scan.nextInt();
-	    switch(answer) {
-		    case 1: 
-				Login();
-		    	break;
-		    	
-			case 2:  
-				NewUser();
-		    	break; 
-		    
-			default: 
-		    	System.out.print("Error!" );
-	    }
+		 library.getLibraryData();
+
+		    System.out.println("Welcome to Library Management!");
+
+		    // Check if there are any registered users
+		    if (library.getPatron().isEmpty()) {
+		        System.out.println("There are no registered users. Please create an account first.");
+		        NewUser(); // Prompt the user to create an account
+		    } else {
+		        presentLoginOptions(); // Proceed to present login options
+		    }
 	}
+	
+	public static void presentLoginOptions() {
+	    System.out.println("\n1. Login\n2. Create an Account ");
+	    System.out.print("\nPlease Enter Your Choice: ");
+	    int answer= 0;
+	    boolean validInput= false;
+	    
+	    
+	    while(!validInput) {
+	    	if (scan.hasNextInt()) {
+	            answer = scan.nextInt();
+	            validInput = true; // Set validInput to true once integer input is received
+	        } else {
+	            System.out.println("Invalid input. Please enter a valid number.");
+	            scan.next(); // Consume the invalid input
+	        }
+	    }
+	    
+	    switch (answer) {
+	       case 1:
+	           Login(); // Proceed to login
+	           break;
+	
+	       case 2:
+	           NewUser(); // Proceed to create an account
+	           break;
+	
+	       default:
+	           System.out.println("Invalid choice.");
+	           presentLoginOptions(); 
+	    }
+    
+   }
 	
 		
 	public static void Login() {
@@ -115,6 +140,7 @@ public class MainClass {
 						
 			default: 
 		    	System.out.print("Error!" );
+		    	UserScreen(p); 
 	    }
 	    scan.close();
 	}
@@ -171,7 +197,8 @@ public class MainClass {
 				break; 
 						
 			default: 
-		    	System.out.print("Error!" );
+				System.out.println("Invalid choice.");
+				AdminScreen(p); 
 	    }
 	     scan.close();
 	}
