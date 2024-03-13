@@ -179,13 +179,7 @@ public class MainClass {
 	private static void ShowBorrowingHistory() {
 		System.out.println("\n-- BORROWING HISTORY --\n");
 		 for (Patron p: library.getPatron()) {
-			 if (p.getBorrowHistory().isEmpty()){
-				 	System.out.println("** " + p.getName() + " **");
-	        		System.out.println("There are no borrow histories.\n");
-	         }
-			 else {
-				 p.displayBorrowHistory(p);
-			 }
+			 p.displayBorrowHistory(p);
 		 }
 	}
 	
@@ -238,14 +232,10 @@ public class MainClass {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("\nRETURN BOOK HERE!\n");
 		System.out.println("Below are the books currently borrowed from Library");
-		if (p.getBorrowHistory().isEmpty()){
-		 	System.out.println("** " + p.getName() + " **");
-    		System.out.println("There are no borrow histories.\n");
-    		System.exit(0);
-	     }
-		 else {
-			 p.displayBorrowHistory(p);
-		 }
+		p.displayBorrowHistory(p);
+		if (p.getBorrowHistory().isEmpty()) {
+			System.exit(0);
+        }
 		System.out.print("Enter ISBN of the book: ");
 		String isbn = scan.nextLine();
 		int result = searchBook(isbn);
