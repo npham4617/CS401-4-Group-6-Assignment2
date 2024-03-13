@@ -12,7 +12,7 @@ public class MainClass {
 		
 		 library.getLibraryData();
 
-		    System.out.println("Welcome to Library Management!");
+		    System.out.println("~~~~ WORLD BOOK ONLINE! ~~~~~");
 
 		    // Check if there are any registered users
 		    if (library.getPatron().isEmpty()) {
@@ -24,6 +24,7 @@ public class MainClass {
 	}
 	
 	public static void presentLoginOptions() {
+		System.out.println("\nWelcome to G6 Library!");
 	    System.out.println("\n1. Login\n2. Create an Account ");
 	    System.out.print("\nPlease Enter Your Choice: ");
 	    int answer= 0;
