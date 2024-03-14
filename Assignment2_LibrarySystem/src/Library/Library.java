@@ -27,22 +27,24 @@ public class Library {
 	// Initial Book Data
 	public void getLibraryData() {  
 		
-		Book book1 = new Book("202001", "Adventures of Tom Sawyer         ", "Mark Twain", "Mystery", "Available");
-	    Book book2 = new Book("202002", "Charlie and the Chocolate Factory", "Roald Dahl", "Fiction", "Borrowed");
-	    Book book3 = new Book("202003", "The Lunar Chronicles series      ", "Marissa Meyer", "Fairy", "Available");
-	    Book book4 = new Book("202004", "One Hundred Years of Solitude    ", "Gabriel Márquez", "Magical", "Available");
-	    Book book5 = new Book("202005", "Learn Java for Dummies           ", "John Smith", "Science", "Borrowed");
-	    Book book6 = new Book("202006", "Learn JavaScript in 10 Minutes   ", "Jack Arnold", "Science", "Available");
-	    Book book7 = new Book("202007", "The Haunting of Hill House       ", "Shirley Jackson", "Horror", "Borrowed");
-	    Book book8 = new Book("202008", "Tomorrow, and Tomorrow, and Tomorrow", "Gabrielle Zevin", "Fiction", "Available");
-	    Book book9 = new Book("202009", "Learning .Net is not boring      ", "Hungry Jack", "Science", "Available");
-	    Book book10 = new Book("202010", "Shine while learing Ruby        ", "Britney Spears", "Science", "Available");
-	    Book book11 = new Book("202011", "A journey to the centre of the earth", "Jules Verne", "Fiction", "Available");
-	    Book book12 = new Book("202012", "Learn PHP and work in Facebook  ", "Bill Gate", "Science", "Available");
-	    Book book13 = new Book("202013", "The Return of the King          ", "J.R.R. Tolkien", "Fantasy", "Borrowed");
-	    Book book14 = new Book("202014", "Alice's Adventures in Wonderland", "Lewis Carroll", "Fantasy", "Borrowed");
-	    Book book15 = new Book("202025", "Harry Potter and the Sorcerer's Stone", "J. K. Rowling", "Mystery", "Available");
+		FictionBook book1 = new FictionBook("202001", "Adventures of Tom Sawyer         ", "Mark Twain", "Mystery", "978-048641", "Available");
+	    FictionBook book2 = new FictionBook("202025", "Harry Potter and the Sorcerer's Stone", "J. K. Rowling", "Mystery", "444-395869", "Available");
 
+	    NonFictionBook book3 = new NonFictionBook("202005", "Learn Java for Dummies           ", "John Smith", "Science", "AB0381AKEN", "Borrowed");
+	    NonFictionBook book4 = new NonFictionBook("202006", "Learn JavaScript in 10 Minutes   ", "Jack Arnold", "Science", "NG0381AVUN", "Available");
+	    NonFictionBook book5 = new NonFictionBook("202009", "Learning .Net is not boring      ", "Hungry Jack", "Science", "B00381AKHG", "Available");
+	    
+	    Book book6 = new Book("202010", "Shine while learing Ruby        ", "Britney Spears", "Science", "Available");
+	    Book book7 = new Book("202011", "A journey to the centre of the earth", "Jules Verne", "Fiction", "Available");
+	    Book book8 = new Book("202012", "Learn PHP and work in Facebook  ", "Bill Gate", "Science", "Available");
+	    Book book9 = new Book("202013", "The Return of the King          ", "J.R.R. Tolkien", "Fantasy", "Borrowed");
+	    Book book10 = new Book("202014", "Alice's Adventures in Wonderland", "Lewis Carroll", "Fantasy", "Borrowed");
+	    Book book11 = new Book("202002", "Charlie and the Chocolate Factory", "Roald Dahl", "Fiction", "Borrowed");
+	    Book book12 = new Book("202003", "The Lunar Chronicles series      ", "Marissa Meyer", "Fairy", "Available");
+	    Book book13 = new Book("202004", "One Hundred Years of Solitude    ", "Gabriel Márquez", "Magical", "Available");
+	    Book book14 = new Book("202007", "The Haunting of Hill House       ", "Shirley Jackson", "Horror", "Borrowed");
+	    Book book15 = new Book("202008", "Tomorrow, and Tomorrow, and Tomorrow", "Gabrielle Zevin", "Fiction", "Available");
+	    
 	    addBook(book1);
 	    addBook(book2);
 	    addBook(book3);

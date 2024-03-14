@@ -323,8 +323,8 @@ public class MainClass {
 		System.out.print("\nEnter ISBN: ");
 
 		Scanner scanner = new Scanner(System.in);
+		String isbn = scanner.nextLine();
 		
-		String isbn = scan.nextLine();
 		int result = searchBook(isbn);
 		if(result ==-1) {
 			System.out.println("\nBook with the isbn " + isbn + " does not exist.");
@@ -341,7 +341,7 @@ public class MainClass {
 			    """;
 			System.out.println(myMultiLineText);
 			System.out.print("Please Enter Your Choice: " );
-			int answer = scan.nextInt();
+			int answer = scanner.nextInt();
 			switch(answer) {
 						
 			case 1: 
@@ -386,8 +386,8 @@ public class MainClass {
 		System.out.println("\nADD BOOKS HERE!");
 		
 		System.out.print("\nISBN: ");
-		String isbn = scan.nextLine();
-		
+		String isbn = scanner.nextLine();
+
 		System.out.print("\nTitle: ");
 		String title = scanner.nextLine();
 		

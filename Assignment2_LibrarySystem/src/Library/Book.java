@@ -6,15 +6,15 @@ public class Book {
 	private String author;
 	private String genre;
 	private String status;
-
+	
 	public Book(String isbn, String title, String author, String genre, String status) {
 	    this.isbn = isbn;
 	    this.title = title;
 	    this.author = author;
 	    this.genre = genre;
 	    this.status = status; 
-	}
-
+	} 
+      
 	public String getIsbn() {
 	    return isbn;
 	}
@@ -57,7 +57,7 @@ public class Book {
 	
 	public String toString() {
 		String text = "ISBN: " + isbn + " \t " + "Title: " + title + " \t " + "Author: " + author + " \t " +
-				"Genre: " + genre + " \t " + "Status: " + status + "\n";
+				"Genre: " + genre + " \t " + "Status: " + status;
 		return text;
 	}
 	
