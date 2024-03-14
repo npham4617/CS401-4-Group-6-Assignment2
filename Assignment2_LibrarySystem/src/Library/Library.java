@@ -59,10 +59,10 @@ public class Library {
 	    addBook(book14);
 	    addBook(book15);
 	    
-	    Patron user1 = new Patron(2020, "Allan Sherwood", "allan.sherwood@yahoo.com", "4088814551", "Admin");
-		Patron user2 = new Patron(2021, "John Doe", "john.doe@example.com", "6698814551", "User");
-		Patron user3 = new Patron(2022, "Christineb", "christineb@solarone.com", "4028814551", "User");
-		Patron user4 = new Patron(2023, "David Goldstein", "david.goldstein@hotmail.com", "4058814551", "User");
+	    FacultyPatron user1 = new FacultyPatron(2020, "Allan Sherwood", "allan.sherwood@yahoo.com", "4088814551");
+	    StudentPatron user2 = new StudentPatron(2021, "John Doe", "john.doe@example.com", "6698814551");
+	    StudentPatron user3 = new StudentPatron(2022, "Christineb", "christineb@solarone.com", "4028814551");
+	    StudentPatron user4 = new StudentPatron(2023, "David Goldstein", "david.goldstein@hotmail.com", "4058814551");
 	   
 	    addPatron(user1);
 	    addPatron(user2);

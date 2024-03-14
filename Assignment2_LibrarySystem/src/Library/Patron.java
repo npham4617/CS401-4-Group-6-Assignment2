@@ -7,15 +7,13 @@ public class Patron {
 	private String name;
 	private String email;
 	private String phone_number;
-	private String typeUser;
 	private List<Transaction> borrowingHistory;
 	
-	public Patron(int ID, String name, String email, String phone_number, String typeUser) {
+	public Patron(int ID, String name, String email, String phone_number) {
 	    this.ID = ID;
 	    this.name = name;
 	    this.email = email;
 	    this.phone_number = phone_number;
-	    this.typeUser = typeUser;
 	    this.borrowingHistory = new ArrayList<>();
 	}
 
@@ -58,14 +56,6 @@ public class Patron {
     public List<Transaction> getBorrowHistory() {
         return borrowingHistory;
     }
-    
-    public String typeUser() {
-	    return typeUser;
-	}
-	
-	public void setType(String typeUser) {
-	   this.typeUser = typeUser;
-	}
 	
     public String toString() {
 		String text = "ID: " + ID + " \t " + "Name: " + name + " \t " 
@@ -87,6 +77,10 @@ public class Patron {
 		                 "\n Returned Date: " + transaction.returnDate() + "\n");
 	        }
         }
+    }
+    
+    public void getMenu() {
+    	
     }
     
  }

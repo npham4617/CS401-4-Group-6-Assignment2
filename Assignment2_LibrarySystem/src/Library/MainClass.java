@@ -70,21 +70,20 @@ public class MainClass {
 		    n = library.checkLogin(email, phone_number);
 		} while (n==-1);
 				    
-		System.out.print("\nHi, " + library.getPatron().get(n).getName() + " - "
-				+ library.getPatron().get(n).typeUser() + "\n");
+		System.out.print("\nHi, " + library.getPatron().get(n).getName() + "\n");
 		
-	    if (n != -1) {
-	    	if(library.getPatron().get(n).typeUser().equals("Admin")) {
+		if (n != -1) {
+	    	if(library.getPatron().get(n) instanceof FacultyPatron) {
 	    		AdminScreen(library.getPatron().get(n));
 	    	}
 	    	
-	    	if(library.getPatron().get(n).typeUser().equals("User")) {
+	    	if(library.getPatron().get(n) instanceof StudentPatron) {
 	    		UserScreen(library.getPatron().get(n));
-	    	}   		
+	    	}   
 	    }
 	    scanner.close();
 	}
-	
+	   
 	public static void NewUser() {
 		Scanner scanner = new Scanner(System.in);
 		Random rand = new Random();
@@ -96,14 +95,16 @@ public class MainClass {
 		System.out.print("\nName: ");
 		String name = scanner.nextLine();
 		
+	
 		System.out.print("\nEmail: ");
 		String email = scanner.nextLine();
 		
+			
 		System.out.print("\nPhone: ");
 		String phone_number = scanner.nextLine();
 		
-
-		Patron myUser = new Patron(ran_id, name, email, phone_number, "User");
+	    
+		StudentPatron myUser = new StudentPatron(ran_id, name, email, phone_number);
 		library.addPatron(myUser);
 		
 		System.out.println("\nNew user is create sucessfully!");
@@ -115,14 +116,7 @@ public class MainClass {
 	}
 	
 	public static void UserScreen(Patron p) {
-		String myMultiLineText = """
-			\n-- LIBRARY COLLECTIONS --\n
-			1.  View Library Books
-			2.  Borrow Book
-			3.  Return Book
-	        """;
-		
-		System.out.println(myMultiLineText);
+		p.getMenu();
 		System.out.print("Please Enter Your Choice: " );
 	    int answer = scan.nextInt();
 	    switch(answer) {
@@ -147,20 +141,7 @@ public class MainClass {
 	}
 	
 	public static void AdminScreen(Patron p) {
-		
-		String myMultiLineText = """
-	    		\n-- LIBRARY COLLECTIONS --\n
-	    		1.  View Library Books
-	    		2.  Add Book
-	    		3.  Update Book
-	    		4.  Delete Book
-	    		~~~~~~~~~~~~~~~~~~~~
-	    		5.  View Users List
-	    		6.  Show Borrowing History
-	    		7.  Borrow Books
-	    		8.  Return Books
-                """;
-	    System.out.println(myMultiLineText);
+		p.getMenu();
 	    System.out.print("Please Enter Your Choice: " );
 	    int answer = scan.nextInt();
 	    switch(answer) {
@@ -453,7 +434,6 @@ public class MainClass {
 	    	+ "\nName: " + p.getName() 
 	    	+ "\nEmail: " + p.email() 
 	    	+ "\nPhone number: " + p.phone_number()
-	    	+ "\nUser Type: " + p.typeUser()
 	    	+ "\n");
 	    }
     } 
