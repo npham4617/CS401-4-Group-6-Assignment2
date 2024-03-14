@@ -294,7 +294,7 @@ public class MainClass {
 		
 		System.out.println("\nDELETE BOOKS HERE!");
 		System.out.print("\nEnter ISBN: ");
-		
+		Scanner scan = new Scanner(System.in);
 		String isbn = scan.nextLine();
 		int result = searchBook(isbn);
 		if(result ==-1) {
@@ -305,7 +305,7 @@ public class MainClass {
 			Book book = library.getBooks().get(result);
 			System.out.print("\nDo you want to delete this book? (yes or no): ");
 			
-			String action = scan.next();
+			String action = scan.next().toLowerCase();
 			if (action.equals("yes")) {			
 				library.removeBook(book);
 				System.out.println("\nBook is deleted successfully!");
@@ -342,28 +342,34 @@ public class MainClass {
 			System.out.println(myMultiLineText);
 			System.out.print("Please Enter Your Choice: " );
 			int answer = scanner.nextInt();
+			Scanner scan;
+			
 			switch(answer) {
 						
 			case 1: 
 				System.out.print("\nTitle: ");
-				String title = scanner.nextLine();	
+				scan = new Scanner(System.in);
+				String title = scan.nextLine();	
 				book.setTitle(title);
 				break;
 				    	
 			case 2:  
 				System.out.print("\nAuthor: ");
-				String author = scanner.nextLine();		
+				scan = new Scanner(System.in);
+				String author = scan.nextLine();		
 				book.setAuthor(author);
 				break; 
 				    	
 			case 3:
 				System.out.print("\nGenre: ");
-				String genre = scanner.nextLine();
+				scan = new Scanner(System.in);
+				String genre = scan.nextLine();
 				book.setGenre(genre);
 				break; 
 						
 			case 4:
 				System.out.print("\nStatus (Available or Borrowed): ");
+				scan = new Scanner(System.in);
 				String status = scanner.nextLine();
 				book.setStatus(status);
 				break;
@@ -401,11 +407,31 @@ public class MainClass {
 		library.addBook(myBook);
 		
 		System.out.println("\nThe book is added into the library!");
-		scan.close();
 		scanner.close();
 	}
 	
 	public static void displayAllBooks(Patron p)
+    {
+		System.out.println("\nBOOKS IN THE LIBRARY:\n");
+		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
+	    for (Book book: library.getBooks()) {
+	    	System.out.println(book.getIsbn() + "\t\t" + book.getTitle() + 
+		    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
+		    				"\t\t" + book.status());
+	    }
+
+	    System.out.print("\nDo you want to borrow any of the books? (yes or no): ");
+	    scan.nextLine();
+	    // Convert user answer to lowe-rcase for case-insensitive comparison
+	    String userAnswer = scan.nextLine().toLowerCase(); 
+	    if (userAnswer.equals("yes")) {
+	    	BorrowBook(p);
+	    } else {
+	        System.out.println("\nThank you for using our library");
+	    }
+    }
+	
+	/*public static void displayAllBooks(Patron p)
     {
 		System.out.println("\nBOOKS IN THE LIBRARY:\n");
 		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
@@ -424,7 +450,7 @@ public class MainClass {
 	    } else {
 	        System.out.println("\nThank you for using our library");
 	    }
-    }
+    }*/
 	
 	public static void displayUserLists()
     {
