@@ -332,10 +332,10 @@ public class MainClass {
 			String action = scan.next().toLowerCase();
 			if (action.equals("yes")) {			
 				library.removeBook(book);
-				System.out.println("\nBook is deleted successfully!");
+				System.out.println("\nBook is deleted successfully!\n");
 			}
 			if (action.equals("no")) {			
-				System.out.println("\nSuccessfully cancelled!");
+				System.out.println("\nSuccessfully cancelled!\n");
 			}
 		}
 		scan.close();
@@ -420,8 +420,7 @@ public class MainClass {
 			 }
 		}
 		
-		System.out.println("\nBook information is updated successfully!");
-		System.out.println(library.getBooks().get(result).toString());
+		System.out.println("\nBook information is updated successfully!\n");
 		scan.close();
 		scanner.close();
 		

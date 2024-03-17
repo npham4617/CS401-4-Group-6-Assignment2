@@ -89,3 +89,73 @@ Step:
 9. Type Author then press Enter
 10. Type Genre then press Enter
 Observed result: The book is created successfully and is shown in All book List
+
+Test case 8: Admin user can update the title of book - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email of Admin (e.g.: allan.sherwood@yahoo.com) then press Enter
+4. Enter valid phone number (e.g.: 4088814551) then press Enter
+--> User is navigated to Admin screen
+5. Type 3 to navigate to Update Book screen
+6. Type ISBN (202005) then press Enter
+--> The info of the book is shown
+7. Type 1 to update the title of book
+8. Enter new title of the book
+Observed result: The book title is updated successfully and is shown in All book List
+
+Test case 9: Admin user can update the author of book - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email of Admin (e.g.: allan.sherwood@yahoo.com) then press Enter
+4. Enter valid phone number (e.g.: 4088814551) then press Enter
+--> User is navigated to Admin screen
+5. Type 3 to navigate to Update Book screen
+6. Type ISBN (202005) then press Enter
+--> The info of the book is shown
+7. Type 2 to update the author of book
+8. Enter new author of the book
+Observed result: The book author is updated successfully and is shown in All book List
+
+Test case 10: Admin user can update the genre of book - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email of Admin (e.g.: allan.sherwood@yahoo.com) then press Enter
+4. Enter valid phone number (e.g.: 4088814551) then press Enter
+--> User is navigated to Admin screen
+5. Type 3 to navigate to Update Book screen
+6. Type ISBN (202005) then press Enter
+--> The info of the book is shown
+7. Type 3 to update the  genre of book
+8. Enter new genre of the book
+Observed result: The book genre is updated successfully and is shown in All book List
+
+Test case 11: Admin user can update the status of book - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email of Admin (e.g.: allan.sherwood@yahoo.com) then press Enter
+4. Enter valid phone number (e.g.: 4088814551) then press Enter
+--> User is navigated to Admin screen
+5. Type 3 to navigate to Update Book screen
+6. Type ISBN (202005) then press Enter
+--> The info of the book is shown
+7. Type 4 to update the  status of book
+8. Enter Available or Borrowed
+Observed result: The status of the book is updated successfully and is shown in All book List
+
+Test case 12: Admin user can delete the book - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email of Admin (e.g.: allan.sherwood@yahoo.com) then press Enter
+4. Enter valid phone number (e.g.: 4088814551) then press Enter
+--> User is navigated to Admin screen
+5. Type 4 to go to Delete Book screen
+6. Type ISBN (202005) then press Enter
+--> The info of the book is shown
+7. Enter yes to delete book
+Observed result: The the book is delete successfully and is removed from All book List
+
