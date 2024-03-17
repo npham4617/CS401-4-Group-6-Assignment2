@@ -42,9 +42,7 @@ public class Library {
 	    NonFictionBook book3 = new NonFictionBook("202005", "Learn Java for Dummies           ", "John Smith", "Science", "AB0381AKEN", "Borrowed");
 	    NonFictionBook book4 = new NonFictionBook("202006", "Learn JavaScript in 10 Minutes   ", "Jack Arnold", "Science", "NG0381AVUN", "Available");
 	    NonFictionBook book5 = new NonFictionBook("202009", "Learning .Net is not boring      ", "Hungry Jack", "Science", "B00381AKHG", "Available");
-	    NonFictionBook book8 = new NonFictionBook("202012", "Learn PHP and work in Facebook   ", "Bill Gate  ", "Science", "BF0381AKHG", "Available");
-	    
-	    
+	    NonFictionBook book8 = new NonFictionBook("202012", "Learn PHP and work in Facebook   ", "Bill Gate  ", "Science", "BF0381AKHG", "Available");    
 	    
 	    addBook(book1);
 	    addBook(book2);

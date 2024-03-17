@@ -266,6 +266,7 @@ public class MainClass {
 
 		System.out.print("Enter ISBN of the book: ");
 		String isbn = scan.nextLine();
+		
 		int result = searchBook(isbn);
 			
 		if(result !=-1)			
@@ -302,35 +303,48 @@ public class MainClass {
 		if (p.getBorrowHistory().isEmpty()) {
 			System.exit(0);
         }
-		System.out.print("Enter ISBN of the book: ");
-		String isbn = scan.nextLine();
-		int result = searchBook(isbn);
+		int result = -1;
+		do {
+			System.out.print("Enter ISBN of the book: ");
+			String isbn = scan.nextLine();
 			
-		if(result !=-1)			
-		{	
-			Book book = library.getBooks().get(result);
-			Transaction tran = new Transaction(p, book);	
-			
-			// Find the borrowDate for the returned book
-			Date borrowDate = null;
-			for (Transaction tr1 : p.getBorrowHistory()) {
-				if (tr1.book().getIsbn() == book.getIsbn()) {
-					borrowDate = tr1.borrowedDate();
+			List<Transaction> borrowHistory = p.getBorrowHistory();
+			for (Transaction transaction : borrowHistory) {
+				if(transaction.book().getIsbn().equals(isbn)) {
+					result = borrowHistory.indexOf(transaction);
+					System.out.println(transaction.book().toString());
 				}
 			}
-			
-			// change returnDate to string
-			String returnDate = dateFormat.format(new Date());
-			tran.setreturnDate(returnDate);
-			
-			book.setStatus("Available");
 				
-			System.out.println("The book is returned successfully!");
-			System.out.println ("\nName: " + p.getName()
-							+ "\nBook title: " + book.getTitle()
-							+ "\nBorrow Date: " + borrowDate
-							+ "\nReturn Date: " + tran.returnDate());		
-		}	
+			if(result !=-1)			
+			{	
+				Book book = library.getBooks().get(result);
+				Transaction tran = new Transaction(p, book);	
+				
+				// Find the borrowDate for the returned book
+				Date borrowDate = null;
+				for (Transaction tr1 : p.getBorrowHistory()) {
+					if (tr1.book().getIsbn() == book.getIsbn()) {
+						borrowDate = tr1.borrowedDate();
+					}
+				}
+				
+				// change returnDate to string
+				String returnDate = dateFormat.format(new Date());
+				tran.setreturnDate(returnDate);
+				
+				book.setStatus("Available");
+					
+				System.out.println("The book is returned successfully!");
+				System.out.println ("\nName: " + p.getName()
+								+ "\nBook title: " + book.getTitle()
+								+ "\nBorrow Date: " + borrowDate
+								+ "\nReturn Date: " + tran.returnDate());		
+			}
+			else {
+				System.out.println("You do not borrow the book with the isbn " + isbn + "\n");
+			}
+		}while (result ==-1);
 			
 		scan.close();
 		
