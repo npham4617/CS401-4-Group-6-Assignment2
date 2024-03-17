@@ -175,15 +175,15 @@ public class MainClass {
 		    	break;
 		    	
 			case 2:  
-				addBook();
+				addBook(p);
 		    	break; 
 		    	
 			case 3:
-				updateBook();
+				updateBook(p);
 				break; 
 				
 			case 4:
-				deleteBook();
+				deleteBook(p);
 				break;
 				
 			case 5: 
@@ -314,7 +314,7 @@ public class MainClass {
 		return index;
 	}
 		
-	private static void deleteBook() {
+	private static void deleteBook(Patron p) {
 		
 		System.out.println("\nDELETE BOOKS HERE!");
 		System.out.print("\nEnter ISBN: ");
@@ -341,7 +341,7 @@ public class MainClass {
 		scan.close();
 	}
 
-	private static void updateBook() {
+	private static void updateBook(Patron p) {
 		
 		System.out.println("\nUPDATE BOOKS HERE!");
 		System.out.print("\nEnter ISBN: ");
@@ -419,11 +419,15 @@ public class MainClass {
 		scanner.close();
 	}
 	
-	private static void addBook() {
+	private static void addBook(Patron p) {
 		
+		Scanner scana = new Scanner(System.in);
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("\nADD BOOKS HERE!");
+		
+		System.out.print("\nFiction Book (1) or NonFiction Book (2): ");
+		int kind = scan.nextInt();
 		
 		System.out.print("\nISBN: ");
 		String isbn = scanner.nextLine();
@@ -436,35 +440,62 @@ public class MainClass {
 		
 		System.out.print("\nGenre: ");
 		String genre = scanner.nextLine();
-
-		Book myBook = new Book(isbn, title, author, genre, "Available");
-		library.addBook(myBook);
+		
+		if (kind == 1) {	
+			FictionBook myBook = new FictionBook(isbn, title, author, genre,"978-048641", "Available");
+			library.addBook(myBook);
+		}
+		
+		if (kind == 2) {	
+			NonFictionBook myBook = new NonFictionBook(isbn, title, author, genre,"AB0381ENZO", "Available");
+			library.addBook(myBook);
+		}
 		
 		System.out.println("\nThe book is added into the library!");
 		scanner.close();
+		scana.close();
+		
+		displayAllBooks(p);
+		
 	}
 	
 	public static void displayAllBooks(Patron p)
     {
-		System.out.println("\nBOOKS IN THE LIBRARY:\n");
-		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("\nBOOKS IN THE LIBRARY:");
+		System.out.println("\n ** Fiction Book List:\n");
+		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\tFiction Code\t\t Status");
 	    for (Book book: library.getBooks()) {
-	    	System.out.println(book.getIsbn() + "\t\t" + book.getTitle() + 
-		    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
-		    				"\t\t" + book.status());
+	    	if(book instanceof FictionBook) {
+	    		FictionBook fictionBook = (FictionBook) book;
+	    		System.out.println(fictionBook.getIsbn() + "\t\t" + fictionBook.getTitle() + 
+		    			"\t\t" + fictionBook.getAuthor() + "\t\t" + fictionBook.getGenre() + 
+		    			"\t\t" + fictionBook.getFictioncode() + "\t\t" + fictionBook.status());
+	    	}
 	    }
-
+	    
+	    System.out.println("\n\n ** Non Fiction Book List:\n");
+		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\tCategory Code\t\t Status");	
+	    for (Book book: library.getBooks()) {
+	    	if(book instanceof NonFictionBook) {
+	    		NonFictionBook nonfictionBook = (NonFictionBook) book;
+	    		System.out.println(nonfictionBook.getIsbn() + "\t\t" + nonfictionBook.getTitle() + 
+		    			"\t\t" + nonfictionBook.getAuthor() + "\t\t" + nonfictionBook.getGenre() + 
+	    				"\t\t" + nonfictionBook.getCategorycode() + "\t\t" + nonfictionBook.status());
+	    	}
+	    }
+	    
 	    System.out.print("\nDo you want to borrow any of the books? (yes or no): ");
-	    scan.nextLine();
+	    scanner.nextLine();
 	    // Convert user answer to lowe-rcase for case-insensitive comparison
-	    String userAnswer = scan.nextLine().toLowerCase(); 
+	    String userAnswer = scanner.nextLine().toLowerCase(); 
 	    if (userAnswer.equals("yes")) {
 	    	BorrowBook(p);
 	    } else {
 	        System.out.println("\nThank you for using our library");
 	    }
+	    scanner.close();
     }
-	
 	
 	public static void displayUserLists()
     {
