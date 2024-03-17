@@ -212,11 +212,11 @@ public class MainClass {
 		    	break; 
 		    	
 			case 3:
-				updateBook();
+				updateBook(p);
 				break; 
 				
 			case 4:
-				deleteBook();
+				deleteBook(p);
 				break;
 				
 			case 5: 
@@ -347,7 +347,7 @@ public class MainClass {
 		return index;
 	}
 		
-	private static void deleteBook() {
+	private static void deleteBook(Patron p) {
 		
 		System.out.println("\nDELETE BOOKS HERE!");
 		System.out.print("\nEnter ISBN: ");
@@ -371,17 +371,12 @@ public class MainClass {
 				System.out.println("\nSuccessfully cancelled!\n");
 			}
 		}
+		
+		displayAllBooks(p);
 		scan.close();
-		// Display all books in the Library
-		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
-		for (Book book: library.getBooks()) {
-			 System.out.println(book.getIsbn() + "\t\t" + book.getTitle() + 
-						    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
-						    			"\t\t" + book.status());
-		}
 	}
 
-	private static void updateBook() {
+	private static void updateBook(Patron p) {
 		
 		System.out.println("\nUPDATE BOOKS HERE!");
 		System.out.print("\nEnter ISBN: ");
@@ -454,22 +449,17 @@ public class MainClass {
 		}
 		
 		System.out.println("\nBook information is updated successfully!\n");
+		
+		displayAllBooks(p);
+		
 		scan.close();
 		scanner.close();
-		
-		// Display all books in the Library
-		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
-		for (Book book: library.getBooks()) {
-			 System.out.println(book.getIsbn() + "\t\t" + book.getTitle() + 
-				    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
-				    			"\t\t" + book.status());
-		}
 	}
 	
 	private static void addBook(Patron p) {
 		
-		Scanner scana = new Scanner(System.in);
 		Scanner scanner = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("\nADD BOOKS HERE!");
 		
@@ -499,17 +489,9 @@ public class MainClass {
 		}
 		
 		System.out.println("\nThe book is added into the library!");
-		scanner.close();
-		scana.close();
-		
 		displayAllBooks(p);
-		/*// Display all books in the Library
-		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
-	    for (Book book: library.getBooks()) {
-	     		System.out.println(book.getIsbn() + "\t\t" + book.getTitle() + 
-		    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
-		    			"\t\t" + book.status());
-	    }*/
+		scanner.close();
+		scan.close();
 	}
 	
 	public static void displayAllBooks(Patron p)
