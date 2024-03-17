@@ -1,0 +1,91 @@
+Test case 1: Admin user can login successfully - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email (e.g.: allan.sherwood@yahoo.com) then press Enter
+4. Enter valid phone number (e.g.: 4088814551) then press Enter
+5. Observe the result
+Observed result: User is navigated to Admin screen
+
+Test case 2: Normal user can login successfully - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email (e.g.: john.doe@example.com) then press Enter
+4. Enter valid phone number (e.g.: 6698814551) then press Enter
+5. Observe the result
+Observed result: User is navigated to User screen
+
+Test case 3: User can create a new account successfully - PASSED
+Step:
+1. Launch Library System program
+2. Type 2 to navigate to Create new account screen
+3. Enter a name (e.g.: enzo nguyen) then press Enter
+3. Enter an email (e.g.: enzo.sherwood@yahoo.com) then press Enter
+4. Enter valid phone number (e.g.: 4088814530) then press Enter
+5. Observe the result
+Observed result: New account is created and the user is navigated to Login screen
+
+Test case 4: User can login with new created account - PASSED
+Step:
+1. Launch Library System program
+2. Type 2 to navigate to Create new account screen
+3. Enter a name (e.g.: enzo nguyen) then press Enter
+3. Enter an email (e.g.: enzo.sherwood@yahoo.com) then press Enter
+4. Enter valid phone number (e.g.: 4088814530) then press Enter
+--> The user is navigated to Login screen
+5. Enter newly email (e.g.: enzo.sherwood@yahoo.com) then press Enter
+6. Enter newly phone number (e.g.: 4088814530) then press Enter
+7. Observe the result
+Observed result: User is navigated to User screen
+
+Test case 5: Normal/Admin user can view all book in the Library - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email (e.g.: john.doe@example.com) then press Enter
+4. Enter valid phone number (e.g.: 6698814551) then press Enter
+--> User is navigated to User screen
+5. Type 1 to view all books in the Library
+Observed result: All books in the Library are shown
+
+Test case 6: Normal user can borrow the book - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email (e.g.: john.doe@example.com) then press Enter
+4. Enter valid phone number (e.g.: 6698814551) then press Enter
+--> User is navigated to User screen
+5. Type 2 to navigate to BorrowBook screen
+--> All available books in the Library are shown
+6. Enter ISBN of the book which user want to borrow
+--> The detailed book is shown
+7. Enter the return date (e.g.: 06-15-2024) the press Enter
+Observed result: The info of loan book is shown including user name, book title, borrow date and return date
+
+Test case 7: User can return the book - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email (e.g.: john.doe@example.com) then press Enter
+4. Enter valid phone number (e.g.: 6698814551) then press Enter
+--> User is navigated to User screen
+5. Type 3 to navigate to ReturrnBook screen
+--> User's borrowing history is shown
+6. Enter ISBN of the book which user want to return
+Observed result: The book is returned successfully and the book status is changed to Available
+
+Test case 7: Admin user can add a new book - PASSED
+Step:
+1. Launch Library System program
+2. Type 1 to navigate to Login screen
+3. Enter valid email of Admin (e.g.: allan.sherwood@yahoo.com) then press Enter
+4. Enter valid phone number (e.g.: 4088814551) then press Enter
+--> User is navigated to Admin screen
+5. Type 2 to navigate to Add Book screen
+6. Type 1 or 2 to create Fiction Book or NonFiction Book
+7. Type ISBN then press Enter
+8. Type book title then press Enter
+9. Type Author then press Enter
+10. Type Genre then press Enter
+Observed result: The book is created successfully and is shown in All book List

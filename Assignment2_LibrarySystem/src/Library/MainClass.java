@@ -175,15 +175,15 @@ public class MainClass {
 		    	break;
 		    	
 			case 2:  
-				addBook(p);
+				addBook();
 		    	break; 
 		    	
 			case 3:
-				updateBook(p);
+				updateBook();
 				break; 
 				
 			case 4:
-				deleteBook(p);
+				deleteBook();
 				break;
 				
 			case 5: 
@@ -314,7 +314,7 @@ public class MainClass {
 		return index;
 	}
 		
-	private static void deleteBook(Patron p) {
+	private static void deleteBook() {
 		
 		System.out.println("\nDELETE BOOKS HERE!");
 		System.out.print("\nEnter ISBN: ");
@@ -339,9 +339,16 @@ public class MainClass {
 			}
 		}
 		scan.close();
+		// Display all books in the Library
+		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
+		for (Book book: library.getBooks()) {
+			 System.out.println(book.getIsbn() + "\t\t" + book.getTitle() + 
+						    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
+						    			"\t\t" + book.status());
+		}
 	}
 
-	private static void updateBook(Patron p) {
+	private static void updateBook() {
 		
 		System.out.println("\nUPDATE BOOKS HERE!");
 		System.out.print("\nEnter ISBN: ");
@@ -417,9 +424,17 @@ public class MainClass {
 		System.out.println(library.getBooks().get(result).toString());
 		scan.close();
 		scanner.close();
+		
+		// Display all books in the Library
+		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
+		for (Book book: library.getBooks()) {
+			 System.out.println(book.getIsbn() + "\t\t" + book.getTitle() + 
+				    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
+				    			"\t\t" + book.status());
+		}
 	}
 	
-	private static void addBook(Patron p) {
+	private static void addBook() {
 		
 		Scanner scana = new Scanner(System.in);
 		Scanner scanner = new Scanner(System.in);
@@ -455,8 +470,13 @@ public class MainClass {
 		scanner.close();
 		scana.close();
 		
-		displayAllBooks(p);
-		
+		// Display all books in the Library
+		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
+	    for (Book book: library.getBooks()) {
+	     		System.out.println(book.getIsbn() + "\t\t" + book.getTitle() + 
+		    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
+		    			"\t\t" + book.status());
+	    }
 	}
 	
 	public static void displayAllBooks(Patron p)
@@ -486,7 +506,6 @@ public class MainClass {
 	    }
 	    
 	    System.out.print("\nDo you want to borrow any of the books? (yes or no): ");
-	    scanner.nextLine();
 	    // Convert user answer to lowe-rcase for case-insensitive comparison
 	    String userAnswer = scanner.nextLine().toLowerCase(); 
 	    if (userAnswer.equals("yes")) {
