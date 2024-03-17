@@ -19,6 +19,37 @@ Usage:
 3. Use the menu options provided to perform desired actions.
 4. Explore the various features of the library management system.
 
+User Interaction Flow and Sample Output:
+The library system is designed to be interactive and user-friendly. Below is a sample interaction flow demonstrating how users can navigate through the system.
+
+(Starting The Application)
+~~~~ World Book Online! ~~~~
+Welcome to G6 Library!
+1. Login
+2. Create an Account
+Please Enter Your Choice: <User input: 1 or 2>
+
+(Creating New User Here!)
+~~~ Create New User Here! ~~~
+Name: Aiden Factory
+Email: AidenFactory@gmail.com
+Phone: 415-456-3454
+New User is created successfully!
+
+(Logging in)
+~~~ Loging User Here! ~~~
+Email: AidenFactory@gmail.com
+Phone Number: 415-456-3454
+Hi, Aiden Factory
+
+(User is presented with choices)
+~~~ Library Collections ~~~
+1. View Library Books
+2. Borrow Book
+3. Return Book
+Please Enter your Choice: <User Input>
+
+
 Folder Structure:
 
 library-management-system
