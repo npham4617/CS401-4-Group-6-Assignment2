@@ -1,0 +1,46 @@
+Project Title : *** Library Management System ***
+
+Description:
+The Library Management System is a Java-based application designed to help librarians manage books, patrons, and transactions efficiently. It provides functionalities for adding, removing, and updating books and patrons, as well as checking out and returning books.
+
+Installation Instructions:
+
+1. Download or Clone the project repository to your local machine
+
+2. Import the project into your preferred Java IDE (e.g., Eclipse, IntelliJ IDEA).  Ensure that you have Java Development Kit (JDK) installed on your system.
+
+Usage:
+
+1. Run the application in your Java IDE.
+2. Follow the on-screen prompts to navigate through different functionalities:
+   .Add, remove, or update books.
+   .Register new patrons or update existing patron information.
+   .Check out and return books for patrons.
+3. Use the menu options provided to perform desired actions.
+4. Explore the various features of the library management system.
+
+Folder Structure:
+
+library-management-system
+ src/                       # Source code directory
+
+Dependencies:
+Window/ mac
+Eclipse
+Executing program
+All file would be executed in Java complier
+
+
+How to Contribute:
+
+We welcome contributions to improve the functionality and usability of the library management system. 
+If you're interested in contributing, please follow these steps:
+
+Fork the repository.
+Create a new branch for your changes.
+Make your modifications and commit them with descriptive commit messages.
+Push your changes to your forked repository.
+Submit a pull request to the main repository.
+
+Credits:
+This project was developed by Heritier Kimbi , Ngoc Ngan Pham, Scott Tanaka, Scott Taylor and Edysson Termonfils as part of the CS401 Assignment #2.
