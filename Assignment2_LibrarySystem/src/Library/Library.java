@@ -35,15 +35,15 @@ public class Library {
 	    NonFictionBook book5 = new NonFictionBook("202009", "Learning .Net is not boring      ", "Hungry Jack", "Science", "B00381AKHG", "Available");
 	    
 	    Book book6 = new Book("202010", "Shine while learing Ruby        ", "Britney Spears", "Science", "Available");
-	    Book book7 = new Book("202011", "A journey to the centre of the earth", "Jules Verne", "Fiction", "Available");
+	    Book book7 = new Book("202011", "A journey to the centre of the earth", "Jules Verne", "Mystery", "Available");
 	    Book book8 = new Book("202012", "Learn PHP and work in Facebook  ", "Bill Gate", "Science", "Available");
 	    Book book9 = new Book("202013", "The Return of the King          ", "J.R.R. Tolkien", "Fantasy", "Borrowed");
 	    Book book10 = new Book("202014", "Alice's Adventures in Wonderland", "Lewis Carroll", "Fantasy", "Borrowed");
-	    Book book11 = new Book("202002", "Charlie and the Chocolate Factory", "Roald Dahl", "Fiction", "Borrowed");
+	    Book book11 = new Book("202002", "Charlie and the Chocolate Factory", "Roald Dahl", "Mysteryn", "Borrowed");
 	    Book book12 = new Book("202003", "The Lunar Chronicles series      ", "Marissa Meyer", "Fairy", "Available");
 	    Book book13 = new Book("202004", "One Hundred Years of Solitude    ", "Gabriel Márquez", "Magical", "Available");
 	    Book book14 = new Book("202007", "The Haunting of Hill House       ", "Shirley Jackson", "Horror", "Borrowed");
-	    Book book15 = new Book("202008", "Tomorrow, and Tomorrow, and Tomorrow", "Gabrielle Zevin", "Fiction", "Available");
+	    Book book15 = new Book("202008", "Tomorrow, and Tomorrow, and Tomorrow", "Gabrielle Zevin", "Mystery", "Available");
 	    
 	    addBook(book1);
 	    addBook(book2);

@@ -36,7 +36,7 @@ public class MainClass {
 	            answer = scan.nextInt();
 	            validInput = true; // Set validInput to true once integer input is received
 	        } else {
-	            System.out.println("Invalid input. Please enter a valid number.");
+	            System.out.println("Invalid input. Please enter a valid number.\n");
 	            scan.next(); // Consume the invalid input
 	        }
 	    }
@@ -51,7 +51,7 @@ public class MainClass {
 	           break;
 	
 	       default:
-	           System.out.println("Invalid choice.");
+	           System.out.println("Invalid choice.\n");
 	           presentLoginOptions(); 
 	    }
     
@@ -118,7 +118,19 @@ public class MainClass {
 	public static void UserScreen(Patron p) {
 		p.getMenu();
 		System.out.print("Please Enter Your Choice: " );
-	    int answer = scan.nextInt();
+		int answer= 0;
+	    boolean validInput= false;
+		
+		while(!validInput) {
+	    	if (scan.hasNextInt()) {
+	            answer = scan.nextInt();
+	            validInput = true; // Set validInput to true once integer input is received
+	        } else {
+	            System.out.println("Invalid input. Please enter a valid number.\n");
+	            scan.next(); // Consume the invalid input
+	        }
+	    }
+		
 	    switch(answer) {
 		
 			case 1: 
@@ -134,7 +146,7 @@ public class MainClass {
 				break; 
 						
 			default: 
-		    	System.out.print("Error!" );
+		    	System.out.print("Error!\n" );
 		    	UserScreen(p); 
 	    }
 	    scan.close();
@@ -143,7 +155,19 @@ public class MainClass {
 	public static void AdminScreen(Patron p) {
 		p.getMenu();
 	    System.out.print("Please Enter Your Choice: " );
-	    int answer = scan.nextInt();
+	    int answer= 0;
+	    boolean validInput= false;
+		
+		while(!validInput) {
+	    	if (scan.hasNextInt()) {
+	            answer = scan.nextInt();
+	            validInput = true; // Set validInput to true once integer input is received
+	        } else {
+	            System.out.println("Invalid input. Please enter a valid number.");
+	            scan.next(); // Consume the invalid input
+	        }
+	    }
+		
 	    switch(answer) {
 		
 			case 1: 
@@ -341,8 +365,18 @@ public class MainClass {
 			    """;
 			System.out.println(myMultiLineText);
 			System.out.print("Please Enter Your Choice: " );
-			int answer = scanner.nextInt();
-			Scanner scan;
+			int answer= 0;
+		    boolean validInput= false;
+			
+			while(!validInput) {
+		    	if (scan.hasNextInt()) {
+		            answer = scan.nextInt();
+		            validInput = true; // Set validInput to true once integer input is received
+		        } else {
+		            System.out.println("Invalid input. Please enter a valid number.");
+		            scan.next(); // Consume the invalid input
+		        }
+		    }
 			
 			switch(answer) {
 						
