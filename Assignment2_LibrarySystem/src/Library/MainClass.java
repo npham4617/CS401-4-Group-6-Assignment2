@@ -68,6 +68,39 @@ public class MainClass {
 		    System.out.print("Phone Number: " );
 		    String phone_number = scanner.nextLine();
 		    n = library.checkLogin(email, phone_number);
+		    
+		    if (n == -1) {
+	            System.out.println("The provided credentials do not match any registered user. Please try again by selecting one of the following two options.");
+	            System.out.println("\n1. Login Again\n2. Create a New Account ");
+	            System.out.print("\nPlease Enter Your Choice: ");
+	            
+	            int choice= 0;
+	    	    boolean validInput= false;
+	    	    
+	    	    
+	    	    while(!validInput) {
+	    	    	if (scan.hasNextInt()) {
+	    	            choice = scan.nextInt();
+	    	            validInput = true; // Set validInput to true once integer input is received
+	    	        } else {
+	    	            System.out.println("Invalid input. Please enter a valid number.");
+	    	            scan.next(); // Consume the invalid input
+	    	        }
+	    	    }
+	            
+	            switch (choice) {
+	                case 1:
+	                	Login(); 
+	                    break; // Allow user to try again
+	                case 2:
+	                    NewUser(); // Proceed to create a new account
+	                    return; // Exit the Login method after creating a new account
+	                default:
+	                    System.out.println("Invalid choice. Please try again.");
+	                    scanner.nextLine();
+	                    
+	            }
+	        }
 		} while (n==-1);
 				    
 		System.out.print("\nHi, " + library.getPatron().get(n).getName() + "\n");
@@ -175,7 +208,7 @@ public class MainClass {
 		    	break;
 		    	
 			case 2:  
-				addBook();
+				addBook(p);
 		    	break; 
 		    	
 			case 3:
@@ -224,8 +257,8 @@ public class MainClass {
 		System.out.println("Below are all available books in the library: \n");
 		for (Book book: library.getBooks()) {
 			if(book.status().equals("Available")) {
-				System.out.println("ISBN: " + book.getTitle() + "\n"
-						+ "Title: " + book.getIsbn() + "\n"
+				System.out.println("ISBN: " + book.getIsbn() + "\n"
+						+ "Title: " + book.getTitle() + "\n"
 						+ "Author: " + book.getAuthor() + "\n"
 						+ "Genre: " + book.getGenre() + "\n");
 			}
@@ -433,7 +466,7 @@ public class MainClass {
 		}
 	}
 	
-	private static void addBook() {
+	private static void addBook(Patron p) {
 		
 		Scanner scana = new Scanner(System.in);
 		Scanner scanner = new Scanner(System.in);
@@ -469,13 +502,14 @@ public class MainClass {
 		scanner.close();
 		scana.close();
 		
-		// Display all books in the Library
+		displayAllBooks(p);
+		/*// Display all books in the Library
 		System.out.println(" ISBN\t\t\tTitle\t\t\t\t\t Author\t\t\t Genre\t\t Status");
 	    for (Book book: library.getBooks()) {
 	     		System.out.println(book.getIsbn() + "\t\t" + book.getTitle() + 
 		    			"\t\t" + book.getAuthor() + "\t\t" + book.getGenre() + 
 		    			"\t\t" + book.status());
-	    }
+	    }*/
 	}
 	
 	public static void displayAllBooks(Patron p)

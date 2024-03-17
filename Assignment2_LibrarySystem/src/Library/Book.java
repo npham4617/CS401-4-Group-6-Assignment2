@@ -56,8 +56,8 @@ public class Book {
 	}
 	
 	public String toString() {
-		String text = "ISBN: " + isbn + " \t " + "Title: " + title + " \t " + "Author: " + author + " \t " +
-				"Genre: " + genre + " \t " + "Status: " + status;
+		String text = "ISBN: " + isbn + "\t " + "Title: " + title + "\t " + "Author: " + author + "\t " +
+				"Genre: " + genre + "\t " + "Status: " + status;
 		return text;
 	}
 	
