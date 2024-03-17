@@ -446,9 +446,8 @@ public class MainClass {
 			default: 
 		    	System.out.print("Error!" );    	
 			 }
+			System.out.println("\nBook information is updated successfully!\n");
 		}
-		
-		System.out.println("\nBook information is updated successfully!\n");
 		
 		displayAllBooks(p);
 		
