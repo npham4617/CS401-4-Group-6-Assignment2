@@ -484,8 +484,24 @@ public class MainClass {
 		
 		System.out.println("\nADD BOOKS HERE!");
 		
-		System.out.print("\nFiction Book (1) or NonFiction Book (2): ");
-		int kind = scan.nextInt();
+		int kind=0;
+	    boolean validInput= false;
+	    
+	    do {
+			System.out.print("\nFiction Book (1) or NonFiction Book (2): ");
+			
+
+	    	if (scan.hasNextInt()) {
+	    		kind = scan.nextInt();
+	    		if(kind == 1 || kind == 2) {
+	    			validInput = true; // Set validInput to true once integer input is received
+	    		}
+	        } else {
+	            System.out.println("Invalid input. Please enter a valid number.");
+	            scan.next(); // Consume the invalid input
+	        }
+	    } while(!validInput);
+
 		
 		System.out.print("\nISBN: ");
 		String isbn = scanner.nextLine();
