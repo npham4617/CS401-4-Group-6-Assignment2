@@ -23,6 +23,12 @@ Folder Structure:
 
 library-management-system
  src/                       # Source code directory
+ 
+ Assignment2_LibrarySystem 
+ src: This directory contains all the source code for the library management system.
+          .library: Contains Java classes for managing books, patrons, transactions, etc.
+          .Module infojava: Module information file.
+          .Test Document: Contains documentation regarding the test cases and observations made during testing.
 
 Dependencies:
 Window/ mac
