@@ -268,7 +268,11 @@ public class MainClass {
 			System.out.print("Enter ISBN of the book: ");
 			String isbn = scan.nextLine();
 			
-			result = searchBook(isbn);
+			for (Book book: library.getBooks()){
+				if(book.status().equals("Available")&& book.getIsbn().equals(isbn)) {
+					result = library.getBooks().indexOf(book);
+					System.out.println(library.getBooks().get(result).toString());				}
+			}
 				
 			if(result !=-1)			
 			{	
@@ -290,7 +294,7 @@ public class MainClass {
 								+ "\nBorrow Date: " + transaction.borrowedDate() 
 								+ "\nReturn Date: " + transaction.returnDate());		
 			}else {
-				System.out.println("The book with the isbn " + isbn + "does not exits or are not available.\n");
+				System.out.println("The book with the isbn " + isbn + " does not exits or are not available.\n");
 			}
 		}while (result ==-1);	
 			
