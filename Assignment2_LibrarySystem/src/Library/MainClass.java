@@ -372,14 +372,18 @@ public class MainClass {
 	private static void deleteBook(Patron p) {
 		
 		System.out.println("\nDELETE BOOKS HERE!");
-		System.out.print("\nEnter ISBN: ");
 		Scanner scan = new Scanner(System.in);
-		String isbn = scan.nextLine();
-		int result = searchBook(isbn);
-		if(result ==-1) {
-			System.out.println("\nBook with the isbn " + isbn + " does not exist.");
-		}
-		else			
+		int result = -1;
+		do {
+			System.out.print("\nEnter ISBN: ");
+			String isbn = scan.nextLine();
+			result = searchBook(isbn);
+			if(result ==-1) {
+				System.out.println("Book with the isbn " + isbn + " does not exist.");
+			}
+		}while(result ==-1);
+		
+		if(result !=-1)			
 		{	
 			Book book = library.getBooks().get(result);
 			System.out.print("\nDo you want to delete this book? (yes or no): ");
@@ -401,16 +405,20 @@ public class MainClass {
 	private static void updateBook(Patron p) {
 		
 		System.out.println("\nUPDATE BOOKS HERE!");
-		System.out.print("\nEnter ISBN: ");
 
 		Scanner scanner = new Scanner(System.in);
-		String isbn = scanner.nextLine();
-		
-		int result = searchBook(isbn);
-		if(result ==-1) {
-			System.out.println("\nBook with the isbn " + isbn + " does not exist.");
-		}
-		else			
+		int result = -1;
+		do {
+			System.out.print("\nEnter ISBN: ");
+
+			String isbn = scanner.nextLine();
+			
+			result = searchBook(isbn);
+			if(result ==-1) {
+				System.out.println("Book with the isbn " + isbn + " does not exist.");
+			}
+		}while(result == -1);
+		if(result!=-1)			
 		{	
 			Book book = library.getBooks().get(result);
 			String myMultiLineText = """
