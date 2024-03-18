@@ -571,7 +571,7 @@ public class MainClass {
 	    if (userAnswer.equals("yes")) {
 	    	BorrowBook(p);
 	    } else {
-	        System.out.println("\nThank you for using our library");
+	        System.out.println("\nThank you for using our library!");
 	    }
 	    scanner.close();
     }
