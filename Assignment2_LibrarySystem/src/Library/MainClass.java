@@ -263,32 +263,36 @@ public class MainClass {
 						+ "Genre: " + book.getGenre() + "\n");
 			}
 		}
-
-		System.out.print("Enter ISBN of the book: ");
-		String isbn = scan.nextLine();
-		
-		int result = searchBook(isbn);
+		int result = -1;
+		do {
+			System.out.print("Enter ISBN of the book: ");
+			String isbn = scan.nextLine();
 			
-		if(result !=-1)			
-		{	
-			Book book = library.getBooks().get(result);
-			System.out.print("Please enter the return date (MM-DD-YYYY): ");
-			String returnDate = scan.nextLine();
-			Transaction transaction = new Transaction(p, book);	
-			
-			// change borrowedDate to string
-			String borrowedDate = dateFormat.format(new Date());
-			transaction.setborrowedDate(borrowedDate);
-			transaction.setreturnDate(returnDate);
-			
-			book.setStatus("Borrowed");
+			result = searchBook(isbn);
 				
-			System.out.println("The book is borrowed successfully!");
-			System.out.println ("\nName: " + transaction.patron().getName()
-							+ "\nBook title: " + transaction.book().getTitle()
-							+ "\nBorrow Date: " + transaction.borrowedDate() 
-							+ "\nReturn Date: " + transaction.returnDate());		
-		}	
+			if(result !=-1)			
+			{	
+				Book book = library.getBooks().get(result);
+				System.out.print("Please enter the return date (MM-DD-YYYY): ");
+				String returnDate = scan.nextLine();
+				Transaction transaction = new Transaction(p, book);	
+				
+				// change borrowedDate to string
+				String borrowedDate = dateFormat.format(new Date());
+				transaction.setborrowedDate(borrowedDate);
+				transaction.setreturnDate(returnDate);
+				
+				book.setStatus("Borrowed");
+					
+				System.out.println("The book is borrowed successfully!");
+				System.out.println ("\nName: " + transaction.patron().getName()
+								+ "\nBook title: " + transaction.book().getTitle()
+								+ "\nBorrow Date: " + transaction.borrowedDate() 
+								+ "\nReturn Date: " + transaction.returnDate());		
+			}else {
+				System.out.println("The book with the isbn " + isbn + "does not exits or are not available.\n");
+			}
+		}while (result ==-1);	
 			
 		scan.close();
 	}
